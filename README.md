@@ -12,5 +12,5 @@ Features:
 ## Quickstart
 
 1. Run `go get -u github.com/cschomburg/timeular-linux/cmd/timeular`
-2. Grab the `config.json.example` and move to `config.json`
+2. Grab the `config.json.example` and move to `~/.config/timeular/config.json`
 3. Start the application: `./timeular`

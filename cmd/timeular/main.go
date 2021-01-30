@@ -2,12 +2,14 @@ package main
 
 import (
 	"encoding/json"
-	"github.com/cschomburg/timeular-linux"
-	"github.com/cschomburg/timeular-linux/modules"
-	"github.com/cschomburg/timeular-linux/modules/clockify"
 	"log"
 	"os"
 	"time"
+
+	"github.com/adrg/xdg"
+	"github.com/cschomburg/timeular-linux"
+	"github.com/cschomburg/timeular-linux/modules"
+	"github.com/cschomburg/timeular-linux/modules/clockify"
 )
 
 const (
@@ -22,9 +24,15 @@ type Config struct {
 	Activities []timeular.Activity `json:"activities"`
 }
 
-func readConfig() (Config, error) {
-	var config Config
-	r, err := os.Open("./config.json")
+func readConfig() (config Config, err error) {
+	path := os.Getenv("TIMEULAR_CONFIG")
+	if path == "" {
+		path, err = xdg.ConfigFile("timeular/config.json")
+		if err != nil {
+			return config, err
+		}
+	}
+	r, err := os.Open(path)
 	if err != nil {
 		return config, err
 	}
