@@ -1,29 +1,16 @@
-# timeular-zei-linux
-Very basic Linux client for the Timeular ZEI, due to lack of a Linux implementation for the Timeular Zei
+# timeular-linux
 
-# Learn more
- - [The timeular ZEI](https://timeular.com/product/zei/)
- - [Timeular public API](http://developers.timeular.com/public-api/)
+Simple Linux commandline client for the [Timeular](https://timeular.com/product/tracker/) tracking device.
+Forked from [timeular-zei-linux](https://github.com/krisbuist/timeular-zei-linux).
 
-# Usage
+Features:
 
-1. Create an API key on your [profile page](https://profile.timeular.com)
-2. Copy the API key and secret into the `config.json` file in the root of the project
-    ```json
-    {
-      "apiKey": "my-api-key",
-      "apiSecret": "my-api-secret"
-    }
-    ```
-    1. Add the serial number of ZEI device you want to use with this computer to `config.json` as well if you use *more than one* ZEI device (e.g. one at work and one at home)
-        ```json
-        {
-          "apiKey": "my-api-key",
-          "apiSecret": "my-api-secret",
-          "deviceSerial": "TZ******"
-        }
-        ```
-3. Run `go get`
-4. Run `go build`
-5. Give the client enough capabilities to open RAW sockets: `sudo setcap cap_net_raw,cap_net_admin+eip timeular-zei-linux`
-6. Start the application: `./timeular-zei-linux`
+- Usable locally without Timeular Web API, logs to filesystem
+- Bluetooth LE connection via BlueZ DBUS interface
+- Desktop notifications via DBUS
+
+## Quickstart
+
+1. Run `go get -u github.com/cschomburg/timeular-linux/cmd/timeular`
+2. Grab the `config.json.example` and move to `config.json`
+3. Start the application: `./timeular`

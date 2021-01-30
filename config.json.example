@@ -1,4 +1,50 @@
 {
-  "apiKey": "my-api-key",
-  "apiSecret": "my-api-secret"
+  "notify": true,
+  "log_path": "activity.log",
+  "clockify": {
+    "api_key": "",
+    "workspace_id": "",
+    "user_id": ""
+  },
+  "activities": [
+    {
+      "deviceSide": 1,
+      "name": "unassigned"
+    },
+    {
+      "deviceSide": 2,
+      "name": "coffee",
+      "tag": "break"
+    },
+    {
+      "deviceSide": 3,
+      "name": "incident",
+      "tag": "incident"
+    },
+    {
+      "deviceSide": 4,
+      "name": "cto",
+      "tag": "cto"
+    },
+    {
+      "deviceSide": 5,
+      "name": "meeting",
+      "tag": "meeting"
+    },
+    {
+      "deviceSide": 6,
+      "name": "coding",
+      "tag": "coding"
+    },
+    {
+      "deviceSide": 7,
+      "name": "infra",
+      "tag": "infra"
+    },
+    {
+      "deviceSide": 8,
+      "name": "concept",
+      "tag": "concept"
+    }
+  ]
 }
