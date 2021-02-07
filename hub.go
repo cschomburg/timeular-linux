@@ -1,5 +1,7 @@
 package timeular
 
+import "time"
+
 type Client struct {
 	hub  *Hub
 	send chan Timeular
@@ -30,6 +32,8 @@ func (h *Hub) Broadcast(t Timeular) {
 }
 
 func (h *Hub) Run() {
+	var debounceState <-chan time.Time
+
 	for {
 		select {
 		case client := <-h.register:
@@ -40,9 +44,12 @@ func (h *Hub) Run() {
 
 		case message := <-h.broadcast:
 			h.lastState = message
+			debounceState = time.After(2 * time.Second)
+
+		case <-debounceState:
 			for client := range h.clients {
 				select {
-				case client.send <- message:
+				case client.send <- h.lastState:
 				}
 			}
 		}
