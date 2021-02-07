@@ -60,12 +60,12 @@ func main() {
 		hub.Register(clockify.Start(config.Clockify))
 	}
 
-	state := &timeular.Timeular{
-		Activities: config.Activities,
-	}
-
 	manager := timeular.BluetoothManager{
 		OnOrientationChanged: func(sideID int) {
+			state := timeular.Timeular{
+				Activities: config.Activities,
+			}
+
 			activity := state.GetActivity(sideID)
 			activityName := "no activity"
 			if activity != nil {
@@ -75,7 +75,7 @@ func main() {
 			log.Printf("Device side: %d - %s", sideID, activityName)
 
 			state.CurrentSide = sideID
-			state.Tracking = &timeular.CurrentTracking{
+			state.Tracking = timeular.CurrentTracking{
 				Activity:  activity,
 				StartedAt: time.Now(),
 			}

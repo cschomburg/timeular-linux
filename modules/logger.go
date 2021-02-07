@@ -2,14 +2,15 @@ package modules
 
 import (
 	"fmt"
-	"github.com/cschomburg/timeular-linux"
 	"log"
 	"os"
 	"time"
+
+	"github.com/cschomburg/timeular-linux"
 )
 
-func StartLogger(path string) chan *timeular.Timeular {
-	ch := make(chan *timeular.Timeular)
+func StartLogger(path string) chan timeular.Timeular {
+	ch := make(chan timeular.Timeular)
 
 	go func() {
 		f, err := os.OpenFile(path, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)

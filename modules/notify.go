@@ -27,8 +27,8 @@ func sendNotification(n notify.Notification) (uint32, error) {
 	return id, err
 }
 
-func StartNotify() chan *timeular.Timeular {
-	ch := make(chan *timeular.Timeular)
+func StartNotify() chan timeular.Timeular {
+	ch := make(chan timeular.Timeular)
 
 	go func() {
 		log.Println("Module notify active")

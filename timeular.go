@@ -26,11 +26,11 @@ type TimeEntry struct {
 
 type Timeular struct {
 	CurrentSide int
-	Tracking    *CurrentTracking
+	Tracking    CurrentTracking
 	Activities  []Activity
 }
 
-func (timeular *Timeular) GetActivity(deviceSide int) *Activity {
+func (timeular Timeular) GetActivity(deviceSide int) *Activity {
 	for _, a := range timeular.Activities {
 		if a.DeviceSide == deviceSide {
 			return &a

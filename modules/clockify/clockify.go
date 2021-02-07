@@ -12,8 +12,8 @@ type Config struct {
 	ApiKey      string `json:"api_key"`
 }
 
-func Start(config Config) chan *timeular.Timeular {
-	ch := make(chan *timeular.Timeular)
+func Start(config Config) chan timeular.Timeular {
+	ch := make(chan timeular.Timeular)
 
 	client := NewClient(config)
 
